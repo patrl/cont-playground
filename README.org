@@ -4,8 +4,8 @@
 
 ** Applications in natural language semantics
 
-*** [[https://global.oup.com/academic/product/continuations-and-natural-language-9780199575022?cc=us&lang=en&][Continuations and Natural Language - Paperback - Chris Barker; Chung-chieh
-  Sh...]]
+*** [[https://global.oup.com/academic/product/continuations-and-natural-language-9780199575022?cc=us&lang=en&][Continuations and Natural Language - Paperback - Chris Barker; Chung-chieh Sh...]]
+
   THE reference for continuations applied to natural language, with a focus on scope
 
 ** Continuations in ~Haskell~
