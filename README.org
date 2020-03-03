@@ -1,0 +1,8 @@
+#+TITLE: Readme
+
+* Reading
+
+** Continuations in ~Haskell~
+
+- [[https://github.com/quchen/articles/blob/master/cont_monad.md][articles/cont_monad.md at master · quchen/articles · GitHub]]
+  I stole the infix notation idea from here!
