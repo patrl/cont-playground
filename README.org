@@ -6,11 +6,9 @@
 
 *** [[https://global.oup.com/academic/product/continuations-and-natural-language-9780199575022?cc=us&lang=en&][Continuations and Natural Language - Paperback - Chris Barker; Chung-chieh
   Sh...]]
-
-THE reference for continuations applied to natural language, with a focus on scope.
+  THE reference for continuations applied to natural language, with a focus on scope
 
 ** Continuations in ~Haskell~
 
 *** [[https://github.com/quchen/articles/blob/master/cont_monad.md][articles/cont_monad.md at master · quchen/articles · GitHub]]
-
-I stole the infix notation idea from here!
+  I stole the infix notation idea from here!
