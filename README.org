@@ -8,6 +8,10 @@
 
   THE reference for continuations applied to natural language, with a focus on scope
 
+*** [[https://semanticsarchive.net/Archive/2JmMWRjY/charlow-semantics-exceptional-scope-diss.pdf]]
+
+Simon Charlow's disseration.
+
 ** Continuations in ~Haskell~
 
 *** [[https://github.com/quchen/articles/blob/master/cont_monad.md][articles/cont_monad.md at master · quchen/articles · GitHub]]
