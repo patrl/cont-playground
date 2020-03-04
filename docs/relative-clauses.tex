@@ -164,9 +164,10 @@ $Q_{Rel} Q_{Op} = \semtower{λ x . []}{x}$\hfill$\type{\tower{R b}{b}{e}}$
 Composition may now proceed \textit{in-situ} via \textit{lift} and
 \textit{scopal function application}.
 
-\begin{multicols}{2}
+\ex
+That John bought.
+\xe
 
-\ex the book \fbox{that John bought}.\\
 \begin{forest}
   [{$λ x . \ml{j buy} x$}
   [{$\downarrow$}]
@@ -178,12 +179,23 @@ Composition may now proceed \textit{in-situ} via \textit{lift} and
     ]
     ]]
 \end{forest}
-\xe
-
-\columnbreak
+%
+\begin{forest}
+  [{$\type{R t}$}
+  [{$\downarrow$}]
+  [{$\type{\tower{R t}{t}{t}}$}
+    [{$\type{\semtower{R t}{e}}$}]
+    [{$\type{\tower{R t}{t}{e → t}}$}
+      [{$\type{\semtower{R t}{e → e → t}}$}]
+      [{$\type{\tower{R t}{t}{e}}$}]
+    ]
+    ]]
+\end{forest}
 
 \ex
-The man \fbox{The portrait of whom John bought}.\\
+The portrait of whom John bought.
+\xe
+
 \begin{forest}
   [{$λx . \ml{j bought} ιy[y \ml{portrait} x]$}
     [{$↓$}]
@@ -206,9 +218,29 @@ The man \fbox{The portrait of whom John bought}.\\
     ]
   ]]]
 \end{forest}
-\xe
-
-\end{multicols}
+%
+\begin{forest}
+  [{$\type{R t}$}
+    [{$↓$}]
+    [{$\type{\tower{R r}{r}{t}}$}
+      [{$\type{\semtower{R r}{e}}$}]
+      [{$\type{\tower{R r}{r}{e → t}}$}
+        [{$\type{\semtower{R r}{e → e → t}}$}]
+        [{$\type{\tower{R r}{r}{e}}$}
+      [{$Q_{Rel}$}]
+      [{$\type{R e}$}
+      [{$↓$}]
+      [{$\type{\tower{R r}{r}{e}}$}
+        [{$\type{\semtower{R r}{(e → t) → e}}$}]
+        [{$\type{\tower{R r}{r}{e → t}}$}
+          [{$\type{\semtower{R r}{e → e → t}}$}]
+          [{$\type{\tower{R r}{r}{e}}$}]
+        ]
+      ]
+    ]
+    ]
+  ]]]
+\end{forest}
 
 \printbibliography
 
