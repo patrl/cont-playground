@@ -36,7 +36,7 @@
 
 \setcounter{secnumdepth}{3}
 
-\title{...}
+\title{Relative clauses}
 
 \author[Patrick D. Elliott]{Patrick~D. Elliott}
 
@@ -73,16 +73,28 @@
 
 \maketitle% this prints the handout title, author, and date
 
-We can assume that the relative operator is just an identity function:
+\todo[inline]{Do we face von Stechow's problem for pied-piping in relatives?}
+
+\section{Null operator theory}
+
+Let's start by defining a new type constructor:
 
 \ex
-$Op_{Rel} ≔ λ x . x$\hfill$\type{r → r}$
+$\type{R a ≔ e → a}$
 \xe
 
-We can shift a relative operator into a scope taker via a shifter we can call $\ml{Q}_{Rel}$.
+The relative operators is an inhabitant of $\type{R e}$ (an identity function):
 
 \ex
-$Q_{Rel} m ≔ λ k . λ x . k (m x)$\hfill$\type{(r → a) → (a → b) → r → b}$
+$Op_{Rel} ≔ λ x . x$\hfill$\type{R e}$
+\xe
+
+We can shift a relative operator into a scope taker via a shifter we can call
+$\ml{Q}_{Rel}$.\sidenote{This is a flipped version of the \texttt{fmap} of the
+\texttt{Reader} functor.}
+
+\ex
+$Q_{Rel} m ≔ λ k . λ x . k (m x)$\hfill$\type{R a → (a → b) → R b}$
 \xe
 
 Now we have everything we need to get simple pied-piping:
@@ -90,6 +102,8 @@ Now we have everything we need to get simple pied-piping:
 \ex
 Mary met the man [[the portrait of whom] John bought].
 \xe
+
+\subsection{Composition via QR}
 
 Let's start with the composition of the pied-piped DP -- we shift the relative
 operator to a scope-taker via $Q_{Rel}$, and scope it to the edge:
@@ -138,6 +152,63 @@ edge of the relative clause, returning a derived predicate:
 \end{forest}
 \xe
 
+\subsection{Composition via (indexed) continuations}
+
+We can think of the result of applying $Q_{Rel}$ as a tower, in
+\citeauthor{barkerShan2015}'s (\citeyear{barkerShan2015}) terms.
+
+\ex
+$Q_{Rel} Q_{Op} = \semtower{λ x . []}{x}$\hfill$\type{\tower{R b}{b}{e}}$
+\xe
+
+Composition may now proceed \textit{in-situ} via \textit{lift} and
+\textit{scopal function application}.
+
+\begin{multicols}{2}
+
+\ex the book \fbox{that John bought}.\\
+\begin{forest}
+  [{$λ x . \ml{j buy} x$}
+  [{$\downarrow$}]
+  [{$\semtower{λ x . []}{\ml{j buy }x}$}
+    [{John$^{↑}$}]
+    [{...}
+      [{$\semtower{[]}{\ml{buy}}$\\bought$^{↑}$}]
+      [{$\semtower{λ x . []}{x}$} [{$Q_{Rel} Op_{Rel}$},roof]]
+    ]
+    ]]
+\end{forest}
+\xe
+
+\columnbreak
+
+\ex
+The man \fbox{The portrait of whom John bought}.\\
+\begin{forest}
+  [{$λx . \ml{j bought} ιy[y \ml{portrait} x]$}
+    [{$↓$}]
+    [{$\semtower{λx . []}{\ml{j bought} ιy[y \ml{portrait} x]}$}
+      [{John$^{↑}$}]
+      [{...}
+        [{bought$^{↑}$}]
+        [{$\semtower{λ x . []}{ι y[y \ml{portrait} x]}$}
+      [{$Q_{Rel}$}]
+      [{$λ x . ιy[y \ml{portrait} x]$}
+      [{$↓$}]
+      [{$\semtower{λ x . []}{ι y[y \ml{portrait} x]}$}
+        [{the$^{↑}$}]
+        [{...}
+          [{portrait$^{\uparrow}$}]
+          [{$\semtower{λ x . []}{x}$} [{$Q_{Rel}$ $Op_{Rel}$},roof]]
+        ]
+      ]
+    ]
+    ]
+  ]]]
+\end{forest}
+\xe
+
+\end{multicols}
 
 \printbibliography
 
