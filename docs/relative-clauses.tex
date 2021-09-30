@@ -154,6 +154,69 @@ edge of the relative clause, returning a derived predicate:
 
 \subsection{Composition via (indexed) continuations}
 
+Since continuations do meaning composition \textit{in-situ}, the semantic
+component should be accompanied by a (directly compositional) syntactic
+component.
+
+I'll assume that the atoms of computations are pairs of phonological features
+and meanings.
+
+\newpage
+
+\ex
+Mary met the guy \fbox{the portrait of whom John bought}
+\xe
+
+\ex~
+$Q_{Rel} (\mathbb{X},m) ≔ \left(\semtower{\mathbb{X} \ast []}{\emptyset}, \semtower{\lambda x\,.\,[]}{m\,x}\right)$
+\xe
+
+\ex~
+$Op_{Rel}  ≔ \left(\textrm{whom},id \right)$
+\xe
+
+\ex~
+$(m,n)^{↓}  \coloneq (m id, n id)$
+\xe
+
+\begin{footnotesize}
+\begin{forest}
+  [{$(\text{whom the portrait of $\emptyset$ John bought }\emptyset, λ x . j \ml{bought} ιy[y \ml{portrait} x])$}
+  [{$↓$}]
+  [{$\left(\semtower{\text{[whom the portrait of
+              $\emptyset$]} ∗ []}{\text{John bought
+            }∅}, \semtower\right, \semtower{λ x . []}{j \ml{bought} ιy[y \ml{portrait} x]}\right)$}
+    [{John$^{↑}$}]
+    [{$\left(\semtower{\text{[whom the portrait of
+              $\emptyset$]} ∗ []}{\text{bought
+            }∅}, \semtower\right, \semtower{λ x . []}{λ z . z \ml{bought} ιy[y \ml{portrait} x]}\right)$}
+      [{bought$^{↑}$}]
+      [{$\left(\semtower{\text{[whom the portrait of
+              $\emptyset$]} ∗ []}{∅}, \semtower\right, \semtower{λ x . []}{ιy[y \ml{portrait} x]}\right)$}
+        [{$Q_{Rel}$}]
+        [{$(\text{whom the portrait of } \emptyset,λ x . ιy[y \ml{portrait} x])$}
+        [{$↓$}]
+        [{$\left(\semtower{\text{whom} \ast []}{\text{the portrait of
+              }\emptyset},\semtower{λ x . []}{ιy[y \ml{portrait} x]}\right)$}
+          [{the$^{\uparrow}$}]
+          [{...}
+            [{portrait$^{\uparrow}$}]
+            [{...}
+              [{of$^{\uparrow}$}]
+              [{$\left(\semtower{\text{whom} \ast []}{\emptyset},\semtower{λ x . []}{x}\right)$}
+                [{$Q_{Rel}$}]
+                [{whom}]
+              ]
+            ]
+          ]
+        ]
+      ]
+    ]
+  ]
+  ]]
+\end{forest}
+\end{footnotesize}
+
 We can think of the result of applying $Q_{Rel}$ as a tower, in
 \citeauthor{barkerShan2015}'s (\citeyear{barkerShan2015}) terms.
 
@@ -241,6 +304,18 @@ The portrait of whom John bought.
     ]
   ]]]
 \end{forest}
+
+\section{Islands}
+
+We can cash out the islandhood of relative clause with the following condition:
+
+\ex
+Islandhood of relative clauses\\
+Relative clauses must denote an evaluated type ($\type{R e}$).
+\xe
+
+In a framework in which continuations are used for meaning composition, a
+consequence will be that relative clauses with multiple relative operators won't compose.
 
 \printbibliography
 
